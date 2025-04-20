@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Все посты</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2>{{ post.title }}</h2>
+                <p><strong>Автор:</strong> {{ post.author }}</p>
+                <p><strong>Дата публикации:</strong> {{ post.published_date|date:"d M Y" }}</p>
+                <p>{{ post.content|slice:":150" }}...</p>
+            </li>
+        {% empty %}
+            <p>Нет постов для отображения.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
